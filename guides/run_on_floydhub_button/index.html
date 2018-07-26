@@ -417,20 +417,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" title="Requirements" class="md-nav__link">
-    Requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-the-floydyml-file" title="Testing the floyd.yml file" class="md-nav__link">
-    Testing the floyd.yml file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#adding-the-floydhub-button" title="Adding the FloydHub button" class="md-nav__link">
     Adding the FloydHub button
   </a>
@@ -452,15 +438,35 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-floydyml-config-file-to-improve-reproducibility" title="Using a floyd.yml config file to improve reproducibility" class="md-nav__link">
+    Using a floyd.yml config file to improve reproducibility
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#button-image" title="Button image" class="md-nav__link">
-    Button image
+  <a href="#testing-the-floydyml-file" title="Testing the floyd.yml file" class="md-nav__link">
+    Testing the floyd.yml file
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-image" title="Button image" class="md-nav__link">
+    Button image
+  </a>
   
 </li>
       
@@ -1432,20 +1438,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" title="Requirements" class="md-nav__link">
-    Requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-the-floydyml-file" title="Testing the floyd.yml file" class="md-nav__link">
-    Testing the floyd.yml file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#adding-the-floydhub-button" title="Adding the FloydHub button" class="md-nav__link">
     Adding the FloydHub button
   </a>
@@ -1467,15 +1459,35 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-floydyml-config-file-to-improve-reproducibility" title="Using a floyd.yml config file to improve reproducibility" class="md-nav__link">
+    Using a floyd.yml config file to improve reproducibility
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#button-image" title="Button image" class="md-nav__link">
-    Button image
+  <a href="#testing-the-floydyml-file" title="Testing the floyd.yml file" class="md-nav__link">
+    Testing the floyd.yml file
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-image" title="Button image" class="md-nav__link">
+    Button image
+  </a>
   
 </li>
       
@@ -1540,35 +1552,11 @@
                 <h1 id="creating-a-run-on-floydhub-button">Creating a 'Run on FloydHub' Button<a class="headerlink" href="#creating-a-run-on-floydhub-button" title="Permanent link">&para;</a></h1>
 <p>The 'Run on FloydHub' button enables users to run CPU or GPU-powered workspaces on FloydHub with little or no configuration. The button is ideal for sharing open-source projects, reproducing academic research papers, teaching educational courses to students, and anywhere else you want people to be able to quickly run and reproduce your projects.</p>
 <p>The button is well-suited for use in README files, and is intended to serve as a replacement for the manual configuration of your environment, code, and data required to reproduce your work.</p>
-<p>Here's an example button that trains a sentiment analysis TensorFlow model on FloydHub (including attaching the required datasets):</p>
-<p><a href="https://floydhub.com/run?template=https://github.com/floydhub/sentiment-analysis-template"><img alt="Run" src="https://static.floydhub.com/button/button.svg" /></a></p>
-<p>This document describes the requirements for using the 'Run on FloydHub' button, and how to use these buttons to make it easy to run, reproduce, and share your projects on FloydHub.</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<p><code class="codehilite">floyd.yml</code> is a configuration file describing your FloydHub deep learning environment. It declares your machine type, deep learning framework (e.g. TensorFlow, PyTorch), attached datasets, and other information for running jobs and workspaces on FloydHub.</p>
-<p>There are no specific tools required to create a <code class="codehilite">floyd.yml</code> for your project. The <code class="codehilite">floyd.yml</code> schema has only two required fields: <code class="codehilite">env</code> and <code class="codehilite">machine</code>.</p>
-<p>Here's a sample <code class="codehilite">floyd.yml</code> file:</p>
-<div class="codehilite"><pre><span></span><span class="n">env</span><span class="o">:</span> <span class="n">tensorflow</span><span class="o">-</span><span class="mf">1.8</span>
-<span class="n">machine</span><span class="o">:</span> <span class="n">gpu</span>
-</pre></div>
-
-<p>If your app requires any datasets, those can be specified in the <code class="codehilite">floyd.yml</code>:</p>
-<div class="codehilite"><pre><span></span><span class="n">env</span><span class="o">:</span> <span class="n">tensorflow</span><span class="o">-</span><span class="mf">1.7</span>
-<span class="n">machine</span><span class="o">:</span> <span class="n">cpu</span>
-<span class="n">data</span><span class="o">:</span>
-  <span class="o">-</span> <span class="n">source</span><span class="o">:</span> <span class="n">floydhub</span><span class="sr">/datasets/imdb-preprocessed/</span><span class="mi">1</span>
-    <span class="n">destination</span><span class="o">:</span> <span class="n">imdb</span>
-</pre></div>
-
-<p>For more information, view the floyd.yml schema documentation.</p>
-<h2 id="testing-the-floydyml-file">Testing the floyd.yml file<a class="headerlink" href="#testing-the-floydyml-file" title="Permanent link">&para;</a></h2>
-<p>Now that you've created a <code class="codehilite">floyd.yml</code> file for your project and added it to the project's repo on GitHub, you can easily test that it is valid and that your project can be successfully created. Use your web browser to visit:</p>
-<div class="codehilite"><pre><span></span>https://floydhub.com/run?template=https://github.com/&lt;your_username&gt;/&lt;your_repo_name&gt;
-</pre></div>
-
-<p>If this was successful, then you should be able to automatically create a new project along with a Workspace that contains your repo's code.</p>
+<p>Here's an example button that trains a sentiment analysis TensorFlow model on FloydHub (including attaching the required datasets). You can try it out now by clicking this button:</p>
+<p><a href="https://floydhub.com/run?template=https://github.com/floydhub/sentiment-analysis-template"><img alt="Run" src="https://static.floydhub.com/button/button-small.svg" /></a></p>
+<p>If you'd like to add something like this to your own projects, then this is the guide for you. This document describes how to add the 'Run on FloydHub' button snippet to your README, and how to use these buttons to make it easy to run, reproduce, and share your code on FloydHub workspace.</p>
 <h2 id="adding-the-floydhub-button">Adding the FloydHub button<a class="headerlink" href="#adding-the-floydhub-button" title="Permanent link">&para;</a></h2>
-<p>Once you've verified that your <code class="codehilite">floyd.yml</code> file is valid and working as expected, it's time to add a button to your repo README.</p>
-<p>There are two ways of referencing the template source code repository:</p>
+<p>The only thing that the button snippet needs to know is the location of your public repo on GitHub. There are two ways of referencing your repository, which we're going to call a <code class="codehilite">template</code>:</p>
 <ul>
 <li>
 <p><strong>Basic Setup</strong> This is the preferred approach. Add the button code without specifying the URL of your repository. This is best for GitHub-hosted documentation on your project's README. If you don't specify a <code class="codehilite">template</code> parameter, FloydHub infers it from the location of the button using the <code class="codehilite">referrer</code> header. This makes the button stable under forks of the repository.</p>
@@ -1584,31 +1572,65 @@
 <p>This is convenient because it avoids hard-coding the specific repository URL into the button, allowing forks of the repository to work properly without a change to the button href.</p>
 </div>
 <p>Here's an example that you can copy and paste directly into your own project's README file:</p>
-<div class="codehilite"><pre><span></span>[![Run on FloydHub](https://static.floydhub.com/button/button.svg)](https://floydhub.com/run)
+<div class="codehilite"><pre><span></span>[![Run on FloydHub](https://static.floydhub.com/button/button-small.svg)](https://floydhub.com/run)
 </pre></div>
 
 <p>Here's the equivalent content as HTML:</p>
 <div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://floydhub.com/run&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://static.floydhub.com/button/button.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Run&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://static.floydhub.com/button/button-small.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Run&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 
+<p>If you paste one of these snippets into your repo, then anyone will able to click that button and open your code in a live Workspace on FloydHub.</p>
 <h3 id="advanced-setup">Advanced Setup<a class="headerlink" href="#advanced-setup" title="Permanent link">&para;</a></h3>
-<p>Use the following Markdown snippet as a template, changing the <code class="codehilite">template</code> query paramter to the URL of your repository:</p>
-<div class="codehilite"><pre><span></span>[![Run on FloydHub](https://static.floydhub.com/button/button.svg)](https://floydhub.com/run?template=https://github.com/floydhub/sentiment-analysis-template)
+<p>Again, this approach is for when you want to add a Run on FloydHub somewhere else, other than GitHub.</p>
+<p>Use the following Markdown snippet as a template, changing the <code class="codehilite">template</code> query parameter to the URL of your repository:</p>
+<div class="codehilite"><pre><span></span>[![Run on FloydHub](https://static.floydhub.com/button/button-small.svg)](https://floydhub.com/run?template=https://github.com/floydhub/sentiment-analysis-template)
 </pre></div>
 
 <p>Here's the equivalent content as HTML:</p>
 <div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://floydhub.com/run?template=https://github.com/floydhub/sentiment-analysis-template&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://static.floydhub.com/button/button.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Run&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://static.floydhub.com/button/button-small.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Run&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 
-<h3 id="button-image">Button image<a class="headerlink" href="#button-image" title="Permanent link">&para;</a></h3>
-<p>You can access the link to the 'Run on FloydHub' button image (as a SVG file) here:</p>
+<p>That's it. Now FloydHub will always know the location of your code, even if you decide to put this button somewhere else, like a blog post or your own website.</p>
+<h2 id="using-a-floydyml-config-file-to-improve-reproducibility">Using a floyd.yml config file to improve reproducibility<a class="headerlink" href="#using-a-floydyml-config-file-to-improve-reproducibility" title="Permanent link">&para;</a></h2>
+<p>Sometimes you'll want to be more specific about how the Workspace is configured when someone reproduces your work. For example, you might want to ensure that people run your code in GPU mode, or use a specific environment like PyTorch 0.4, or attach specific datasets to the Workspace. </p>
+<p>In this case, you should add a <code class="codehilite">floyd.yml</code> file to your repo.</p>
+<p><code class="codehilite">floyd.yml</code> is a configuration file describing your FloydHub deep learning environment. It declares your machine type, deep learning framework (e.g. TensorFlow, PyTorch), attached datasets, and other information for running jobs and workspaces on FloydHub.</p>
+<p>There are no specific tools required to create a <code class="codehilite">floyd.yml</code> for your project. The <code class="codehilite">floyd.yml</code> schema has only two required fields: <code class="codehilite">env</code> and <code class="codehilite">machine</code>.</p>
+<p>Here's a sample <code class="codehilite">floyd.yml</code> file:</p>
+<div class="codehilite"><pre><span></span><span class="n">env</span><span class="o">:</span> <span class="n">tensorflow</span><span class="o">-</span><span class="mf">1.8</span>
+<span class="n">machine</span><span class="o">:</span> <span class="n">gpu</span>
+</pre></div>
+
+<p>If your app requires any datasets, those can be specified in the <code class="codehilite">floyd.yml</code>:</p>
+<div class="codehilite"><pre><span></span><span class="n">env</span><span class="o">:</span> <span class="n">tensorflow</span><span class="o">-</span><span class="mf">1.7</span>
+<span class="n">machine</span><span class="o">:</span> <span class="n">cpu</span>
+<span class="n">data</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">source</span><span class="o">:</span> <span class="n">floydhub</span><span class="sr">/datasets/imdb-preprocessed/</span><span class="mi">1</span>
+    <span class="n">destination</span><span class="o">:</span> <span class="n">imdb</span>
+</pre></div>
+
+<p>For more information, view the <a href="../../floyd_config/">floyd.yml schema documentation</a></p>
+<h4 id="testing-the-floydyml-file">Testing the floyd.yml file<a class="headerlink" href="#testing-the-floydyml-file" title="Permanent link">&para;</a></h4>
+<p>Now that you've created a <code class="codehilite">floyd.yml</code> file for your project and added it to the project's repo on GitHub, you can easily test that it is valid and that your project can be successfully created. Use your web browser to visit:</p>
+<div class="codehilite"><pre><span></span>https://floydhub.com/run?template=https://github.com/&lt;your_username&gt;/&lt;your_repo_name&gt;
+</pre></div>
+
+<p>If this was successful, then you should be able to automatically create a new project along with a Workspace that contains your repo's code.</p>
+<h2 id="button-image">Button image<a class="headerlink" href="#button-image" title="Permanent link">&para;</a></h2>
+<p>You can access the link to the large 'Run on FloydHub' button image (as a SVG file) here:</p>
 <div class="codehilite"><pre><span></span>https://static.floydhub.com/button/button.svg
 </pre></div>
 
+<p><img alt="large button" src="https://static.floydhub.com/button/button.svg" /></p>
+<p>The small version is available here (also as an SVG). You can use either one.</p>
+<div class="codehilite"><pre><span></span>https://static.floydhub.com/button/button-small.svg
+</pre></div>
+
+<p><img alt="small button" src="https://static.floydhub.com/button/button-small.svg" /></p>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <h3 id="does-this-work-with-private-repos">Does this work with private repos?<a class="headerlink" href="#does-this-work-with-private-repos" title="Permanent link">&para;</a></h3>
 <p>No, not right now. We are planning to add support for running for private repos.</p>
